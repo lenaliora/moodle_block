@@ -1,12 +1,12 @@
 # Anleitung zur Installation von Moodle mit Nginx, PostgreSQL und Absicherung mit LetsEncrypt
 
 Die Installaiton erfolgt mit einem sudo user:
-sudo su
+`sudo su`
 
 ## Installation von fail2ban damit der Server nicht dauernd Script Kiddy Attacken abbekommt
 
-apt install fail2ban -y
-systemctl restart fail2ban
+`apt install fail2ban -y`
+`systemctl restart fail2ban`
 
 ## Installlation ein Moodle System mit Nginx, PHP und PostgreSQL auf der VM
 
