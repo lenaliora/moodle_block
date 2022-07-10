@@ -1,23 +1,23 @@
-Anlatung zur Installation von Moodle mit Nginx, PostgreSQL und Absicherung mit LetsEncrypt
+# Anleitung zur Installation von Moodle mit Nginx, PostgreSQL und Absicherung mit LetsEncrypt
 
 Die Installaiton erfolgt mit einem sudo user:
 sudo su
 
-# Installation von fail2ban damit der Server nicht dauernd Script Kiddy Attacken abbekommt
+## Installation von fail2ban damit der Server nicht dauernd Script Kiddy Attacken abbekommt
 
 apt install fail2ban -y
 systemctl restart fail2ban
 
-# Installlation ein Moodle System mit Nginx, PHP und PostgreSQL auf der VM
+## Installlation ein Moodle System mit Nginx, PHP und PostgreSQL auf der VM
 
-## Installation von Nginx
+### Installation von Nginx
 
 apt update && apt upgrade
 apt install nginx
 systemctl start nginx.service
 systemctl enable nginx.service
 
-## Installation von PostgreSQL und Erstellen der Datenbank und des DB-Users
+### Installation von PostgreSQL und Erstellen der Datenbank und des DB-Users
 
 apt install postgresql postgresql-contrib
 systemctl status postgresql
@@ -30,7 +30,7 @@ postgres=# CREATE USER moodleuser WITH PASSWORD 'xxx!';
 CREATE DATABASE moodle WITH OWNER moodleuser;
 
 
-## Installation von PHP mit Erweiterungen und Konfiguration
+### Installation von PHP mit Erweiterungen und Konfiguration
 
 apt-get install php-fpm php-common php-pgsql php-gmp php-curl php-intl php-mbstring php-soap php-xmlrpc php-gd php-xml php-cli php-zip unzip git curl -y
 
@@ -39,7 +39,7 @@ apt install nano -y
 nano /etc/php/7.4/fpm/php.ini
 systemctl restart php7.4-fpm
 
-## Installation von Moodle
+### Installation von Moodle
 
 cd /var/www/html
 git clone -b MOODLE_400_STABLE git://git.moodle.org/moodle.git moodle
@@ -89,7 +89,7 @@ Installation vom Browser:
 http://lena.kunde-ssystems.de
 
 
-# Absichern den Zugriff mittels HTTPs und let's Encrypt SSL Zertifikat ab
+## Absichern den Zugriff mittels HTTPs und let's Encrypt SSL Zertifikat ab
 
 apt install certbot
 openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
@@ -100,12 +100,15 @@ nano /var/www/html/moodle/config.php
 
 $CFG->wwwroot   = 'https://lena.kunde-ssystems.de';
 
-# Installation des Moodle Blocks mit Google-Suche:
+## Erstellen des Google Key
+
+https://developers.google.com/custom-search/v1/overview
+
+## Installation des Moodle Blocks mit Google-Suche:
 
 cd /var/www/html/moodle/blocks
 unzip suche.zip
 chown -R www-data:www-data suche/
 
-# Erstellen des Google Key
-
-https://developers.google.com/custom-search/v1/overview
+## Test der Anwendung
+https://lena.kunde-ssystems.de/
