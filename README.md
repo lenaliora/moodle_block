@@ -7,6 +7,10 @@ Die Installaiton erfolgt mit einem sudo user:
 
 `apt install fail2ban -y`
 
+`cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local`
+
+`nano /etc/fail2ban/jail.local`
+
 `systemctl restart fail2ban`
 
 ## Installlation ein Moodle System mit Nginx, PHP und PostgreSQL auf der VM
@@ -38,7 +42,6 @@ Die Installaiton erfolgt mit einem sudo user:
 `postgres=# CREATE USER moodleuser WITH PASSWORD 'xxx!';`
 
 `CREATE DATABASE moodle WITH OWNER moodleuser;`
-
 
 ### Installation von PHP mit Erweiterungen und Konfiguration
 
