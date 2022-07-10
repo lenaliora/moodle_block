@@ -6,7 +6,6 @@ class block_suche extends block_base {
      * Initialisiert die Klassen-Variablen.
      */
     public function init() {
-        // Needed by Moodle to differentiate between blocks.
         $this->title = get_string('suche', 'block_suche');
     }
 
