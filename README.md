@@ -9,6 +9,8 @@ Die Installaiton erfolgt mit einem sudo user:
 
 `cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local`
 
+`apt install nano -y`
+
 `nano /etc/fail2ban/jail.local`
 
 `systemctl restart fail2ban`
@@ -46,8 +48,6 @@ Die Installaiton erfolgt mit einem sudo user:
 ### Installation von PHP mit Erweiterungen und Konfiguration
 
 `apt-get install php-fpm php-common php-pgsql php-gmp php-curl php-intl php-mbstring php-soap php-xmlrpc php-gd php-xml php-cli php-zip unzip git curl -y`
-
-`apt install nano -y`
 
 `nano /etc/php/7.4/fpm/php.ini`
 
